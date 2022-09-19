@@ -19,16 +19,6 @@ namespace Bolletta
             
         }
 
-        public void SetRendimento(double rendimento)
-        {
-            this.rendimento = rendimento;
-        }
-
-        public void setTipoConsumo(string tipoCons)
-        {
-            this.tipoConsumo = tipoCons;
-        }
-
         public void setCostoAnnuale(double costoAnn)
         {
             this.costoAnnuale = costoAnn;

@@ -44,9 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bolletta.cs" />
+    <Compile Include="CaldaiaCondensazione.cs" />
+    <Compile Include="CaldaiaTradizionale.cs" />
+    <Compile Include="PompaBuonLvl.cs" />
+    <Compile Include="PompaEconomica.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Riscaldamento.cs" />
+    <Compile Include="Stufa.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

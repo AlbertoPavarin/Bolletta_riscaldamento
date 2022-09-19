@@ -1,0 +1,7 @@
+C:\Users\ricky\Documents\GitHub\Bolletta_riscaldamento\Bolletta\Bolletta\bin\Debug\Bolletta.exe.config
+C:\Users\ricky\Documents\GitHub\Bolletta_riscaldamento\Bolletta\Bolletta\bin\Debug\Bolletta.exe
+C:\Users\ricky\Documents\GitHub\Bolletta_riscaldamento\Bolletta\Bolletta\bin\Debug\Bolletta.pdb
+C:\Users\ricky\Documents\GitHub\Bolletta_riscaldamento\Bolletta\Bolletta\obj\Debug\Bolletta.csproj.AssemblyReference.cache
+C:\Users\ricky\Documents\GitHub\Bolletta_riscaldamento\Bolletta\Bolletta\obj\Debug\Bolletta.csproj.CoreCompileInputs.cache
+C:\Users\ricky\Documents\GitHub\Bolletta_riscaldamento\Bolletta\Bolletta\obj\Debug\Bolletta.exe
+C:\Users\ricky\Documents\GitHub\Bolletta_riscaldamento\Bolletta\Bolletta\obj\Debug\Bolletta.pdb
