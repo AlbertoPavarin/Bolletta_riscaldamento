@@ -15,6 +15,7 @@ namespace Bolletta
             this.costoInstallazione = 3000;
             this.rendimento = 3.6;
             this.costoAnnuale = 0.27;
+            this.tipoConsumo = "Elettricita";
         }
 
         public int GetCostoInstallazione()
@@ -22,9 +23,9 @@ namespace Bolletta
             return this.costoInstallazione;
         }
 
-        public void CalcolaUtilizzo()
+        public override void CalcolaUtilizzo(double cons)
         {
-            this.utilizzo = (this.consumi * 10.7) / this.rendimento;
+            this.utilizzo = (cons * 10.7) / this.rendimento;
         }
     }
 }

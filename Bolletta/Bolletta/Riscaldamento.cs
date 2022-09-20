@@ -13,15 +13,15 @@ namespace Bolletta
         protected double costoAnnuale;
         protected double consumi;
         protected double totale;
+        protected string tipoConsumo;
 
         public Riscaldamento()
         {
             
         }
 
-        public void setCostoAnnuale(double costoAnn)
+        public virtual void CalcolaUtilizzo(double cons)
         {
-            this.costoAnnuale = costoAnn;
         }
 
         public void SetConsumi(double cons)
@@ -34,10 +34,10 @@ namespace Bolletta
             return this.rendimento;
         }
 
-        /*public string GetTipoConsumo()
+        public string GetTipoConsumo()
         {
             return $"{this.tipoConsumo}";
-        }*/
+        }
 
         public double GetCostoAttuale()
         {
@@ -56,7 +56,7 @@ namespace Bolletta
 
         public void CalcolaCostoTotale() 
         {
-            this.totale = this.costoAnnuale * this.consumi;
+            this.totale = this.costoAnnuale * (this.consumi + this.utilizzo);
         }
 
         public double GetTotale()

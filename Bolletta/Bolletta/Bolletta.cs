@@ -34,7 +34,7 @@ namespace Bolletta
 
         public override string ToString()
         {
-            return $"Bolletta: {this.spesaMateria + this.spesaOneri + this.spesaTrasGestCont + this.qvd}€";
+            return $"Costo bolletta: {Math.Round(this.totale, 4)}€";
         }
 
         public void CalcolaBolletta()
