@@ -9,7 +9,7 @@ namespace Bolletta
     class Riscaldamento
     {
         protected double rendimento;
-        protected string tipoConsumo;
+        protected double utilizzo;
         protected double costoAnnuale;
         protected double consumi;
         protected double totale;
@@ -34,10 +34,10 @@ namespace Bolletta
             return this.rendimento;
         }
 
-        public string GetTipoConsumo()
+        /*public string GetTipoConsumo()
         {
             return $"{this.tipoConsumo}";
-        }
+        }*/
 
         public double GetCostoAttuale()
         {
@@ -51,7 +51,7 @@ namespace Bolletta
 
         public override string ToString()
         {
-            return $"Il rendimento del modello è: {this.rendimento}, il tipo di consumo è: {this.tipoConsumo}, il costo annuale è: {this.costoAnnuale} e i consumi sono: {this.consumi}";
+            return $"Il rendimento del modello è: {this.rendimento}, il costo annuale è: {this.costoAnnuale} e i consumi sono: {this.consumi}";
         }
 
         public void CalcolaCostoTotale() 
@@ -63,5 +63,11 @@ namespace Bolletta
         {
             return this.totale;
         }
+
+        public double GetUtilizzo()
+        {
+            return this.utilizzo;
+        }
+
     }
 }

@@ -13,6 +13,24 @@ namespace Bolletta
             bool controllo;
             string s;
             int scelta;
+            double consumikWh, consumiSmc, kWhTot, smcTot = 0;
+
+            do
+            {
+                Console.WriteLine("Inserisci i kWh annui medi consumati");
+                s = Convert.ToString(Console.ReadLine());
+                controllo = double.TryParse(s, out consumikWh);
+            } while (!controllo || consumikWh < 0);
+
+            do
+            {
+                Console.WriteLine("Inserisci gli SMC annui medi consumati");
+                s = Convert.ToString(Console.ReadLine());
+                controllo = double.TryParse(s, out consumiSmc);
+            } while (!controllo || consumiSmc < 0);
+
+            kWhTot = (consumiSmc * 10.7) + consumikWh;
+            smcTot = (consumikWh / 10.7) + consumiSmc;
 
             do
             {
@@ -25,9 +43,19 @@ namespace Bolletta
                 s = Convert.ToString(Console.ReadLine());
                 controllo = int.TryParse(s, out scelta);
             } while (!controllo ||scelta < 1 || scelta > 5);
-            Console.WriteLine($"\n\n\n{scelta}");
-            Console.WriteLine("Inserisci i kWh annui medi consumati");
-            Console.WriteLine("Inserisci gli SMC annui medi consumati");
+
+            
+            CaldaiaCondensazione caldaiaCond = new CaldaiaCondensazione();
+            caldaiaCond.SetConsumi(consumikWh);
+            caldaiaCond.CalcolaUtilizzo();
+            Console.WriteLine($"Utilizzo Caldaia a condensazione: {caldaiaCond.GetUtilizzo()}\n");
+
+
+            CaldaiaTradizionale caldaiaTrad = new CaldaiaTradizionale();
+            Stufa stufa = new Stufa();
+            PompaEconomica pompaEco = new PompaEconomica();
+            PompaBuonLvl pompaBuonLvl = new PompaBuonLvl();
+
             Console.ReadKey();
         }
     }
