@@ -11,15 +11,16 @@ namespace Bolletta
         protected double spesaMateria;
         protected int spesaTrasGestCont;
         protected int spesaOneri;
-        protected int qvd;
+        protected int spesaFissaVendita; //QVD o PVC
         protected double totale;
+        protected int installazione;
+        protected Riscaldamento metodoRiscaldamento;
 
         public Bolletta()
         {
-            this.spesaMateria = 0;
             this.spesaTrasGestCont = 96;
             this.spesaOneri = 47;
-            this.qvd = 70;
+            this.spesaFissaVendita = 70;
         }
 
         public void SetSpesaMateria(double spesa)
@@ -34,17 +35,32 @@ namespace Bolletta
 
         public override string ToString()
         {
-            return $"Costo bolletta: {Math.Round(this.totale, 4)}€";
+            return $"Costo bolletta {this.metodoRiscaldamento}: {Math.Round(this.totale, 4) + this.installazione}$ per il primo anno, causa installazione, {Math.Round(this.totale, 4)}$ per gli anni successivi";
         }
 
         public void CalcolaBolletta()
         {
-            this.totale = this.spesaMateria + this.spesaOneri + this.spesaTrasGestCont + this.qvd;
+            this.totale = this.spesaMateria + this.spesaOneri + this.spesaTrasGestCont + this.spesaFissaVendita;
         }
 
         public double GetTotale()
         {
             return this.totale;
+        }
+
+        public void SetCostoInstallazione(int costoInt)
+        {
+            this.installazione = costoInt;
+        }
+
+        public void SetMetodoRiscaldamento(Riscaldamento metodo)
+        {
+            this.metodoRiscaldamento = metodo;
+        }
+
+        public Riscaldamento GetMetodoRiscaldamento()
+        {
+            return this.metodoRiscaldamento;
         }
     }
 }

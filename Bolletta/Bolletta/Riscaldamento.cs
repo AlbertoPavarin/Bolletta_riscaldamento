@@ -14,6 +14,7 @@ namespace Bolletta
         protected double consumi;
         protected double totale;
         protected string tipoConsumo;
+        protected int costoInstallazione;
 
         public Riscaldamento()
         {
@@ -69,5 +70,10 @@ namespace Bolletta
             return this.utilizzo;
         }
 
+
+        public int GetCostoInstallazione()
+        {
+            return this.costoInstallazione;
+        }
     }
 }

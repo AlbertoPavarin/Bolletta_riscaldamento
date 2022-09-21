@@ -17,6 +17,7 @@ namespace Bolletta
             List<object> metodiRiscaldamento;
             List<Bolletta> bollette = new List<Bolletta>();
             Bolletta bolletta;
+            Riscaldamento metodoScelto = new Riscaldamento();
 
             do
             {
@@ -47,13 +48,30 @@ namespace Bolletta
                 controllo = int.TryParse(s, out scelta);
             } while (!controllo ||scelta < 1 || scelta > 5);
 
-            Console.WriteLine("\n\n");
-
             CaldaiaCondensazione caldaiaCond = new CaldaiaCondensazione();
             CaldaiaTradizionale caldaiaTrad = new CaldaiaTradizionale();
             Stufa stufa = new Stufa();
             PompaEconomica pompaEco = new PompaEconomica();
             PompaBuonLvl pompaBuonLvl = new PompaBuonLvl();
+
+            switch (scelta)
+            {
+                case 1:
+                    metodoScelto = caldaiaCond;
+                    break;
+                case 2:
+                    metodoScelto = caldaiaTrad;
+                    break;
+                case 3:
+                    metodoScelto = stufa;
+                    break;
+                case 4:
+                    metodoScelto = pompaEco;
+                    break;
+                case 5:
+                    metodoScelto = pompaBuonLvl;
+                    break;
+            }
 
             metodiRiscaldamento = new List<object>(){caldaiaCond, caldaiaTrad, stufa, pompaBuonLvl, pompaEco };
 
@@ -72,6 +90,8 @@ namespace Bolletta
                 metodo.CalcolaCostoTotale();
                 bolletta = new Bolletta();
                 bolletta.SetSpesaMateria(metodo.GetTotale());
+                bolletta.SetCostoInstallazione(metodo.GetCostoInstallazione());
+                bolletta.SetMetodoRiscaldamento(metodo);
                 bollette.Add(bolletta);
             }
 
@@ -85,6 +105,15 @@ namespace Bolletta
             foreach (Bolletta b in bollette)
             {
                 Console.WriteLine($"{b.ToString()}");
+            }
+
+            if (metodoScelto.ToString() == bollette[0].GetMetodoRiscaldamento().ToString())
+            {
+                Console.Write("\n\nIl metodo attualmente installato è il più conveniente\n");
+            }
+            else
+            {
+                Console.WriteLine($"\n\nL'offerta più conveniente è la seguente: {bollette[0].ToString()}");
             }
 
             Console.ReadKey();
