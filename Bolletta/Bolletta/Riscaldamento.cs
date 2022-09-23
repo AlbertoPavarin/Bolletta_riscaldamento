@@ -9,11 +9,11 @@ namespace Bolletta
     class Riscaldamento
     {
         protected double rendimento;
-        protected double utilizzo;
+        protected string tipoConsumo;
         protected double costoAnnuale;
         protected double consumi;
         protected double totale;
-        protected string tipoConsumo;
+        protected double utilizzo;
         protected int costoInstallazione;
 
         public Riscaldamento()

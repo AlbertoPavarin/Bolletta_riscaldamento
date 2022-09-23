@@ -23,15 +23,15 @@ namespace Bolletta
             {
                 Console.WriteLine("Inserisci i kWh annui medi consumati");
                 s = Convert.ToString(Console.ReadLine());
-                controllo = double.TryParse(s, out consumikWh);
-            } while (!controllo || consumikWh < 0);
+                controllo = double.TryParse(s, out consumikWh); // Variabile boolena per controllare se il tipo di dato inserito è un double, => False: se non è un double, True: se lo è
+            } while (!controllo || consumikWh < 0); // Vengono letti i kWh annui medi finchè non viene inserito un numero maggiore di 0
 
             do
             {
                 Console.WriteLine("Inserisci gli SMC annui medi consumati");
                 s = Convert.ToString(Console.ReadLine());
-                controllo = double.TryParse(s, out consumiSmc);
-            } while (!controllo || consumiSmc < 0);
+                controllo = double.TryParse(s, out consumiSmc); // Variabile boolena per controllare se il tipo di dato inserito è un double, => False: se non è un double, True: se lo è
+            } while (!controllo || consumiSmc < 0); // Vengono letti gli smc annui medi finchè non viene inserito un numero maggiore di 0
 
             kWhTot = (consumiSmc * 10.7) + consumikWh;
             smcTot = (consumikWh / 10.7) + consumiSmc;
@@ -45,8 +45,8 @@ namespace Bolletta
                               "Premi 4 per la pompa di calore economica\n" +
                               "Premi 5 per pompa di calore di buon livello\n");
                 s = Convert.ToString(Console.ReadLine());
-                controllo = int.TryParse(s, out scelta);
-            } while (!controllo ||scelta < 1 || scelta > 5);
+                controllo = int.TryParse(s, out scelta); // Variabile boolena per controllare se il tipo di dato inserito è un int, => False: se non è un int, True: se lo è
+            } while (!controllo ||scelta < 1 || scelta > 5); // Viene letto il metodo di riscaldamento attualmento installato finchè non ne viene selezionato uno, inserendo un numero intero >= 1 e <= 5
 
             CaldaiaCondensazione caldaiaCond = new CaldaiaCondensazione();
             CaldaiaTradizionale caldaiaTrad = new CaldaiaTradizionale();
@@ -54,7 +54,7 @@ namespace Bolletta
             PompaEconomica pompaEco = new PompaEconomica();
             PompaBuonLvl pompaBuonLvl = new PompaBuonLvl();
 
-            switch (scelta)
+            switch (scelta) // Assegnazione metodo di riscaldamento tramite la variabile scelta
             {
                 case 1:
                     metodoScelto = caldaiaCond;
@@ -73,10 +73,11 @@ namespace Bolletta
                     break;
             }
 
-            metodiRiscaldamento = new List<object>(){caldaiaCond, caldaiaTrad, stufa, pompaBuonLvl, pompaEco };
+            metodiRiscaldamento = new List<object>(){caldaiaCond, caldaiaTrad, stufa, pompaBuonLvl, pompaEco }; // Lista che contiene tutti i vari metodi di riscaldamento
 
-            foreach (Riscaldamento metodo in metodiRiscaldamento)
+            foreach (Riscaldamento metodo in metodiRiscaldamento) // Per ogni elemento nella lista metodiRiscaldamento
             {
+                // Vengono settati i consumi e viene calcolato l'utilizzo per ogni metodo
                 if (metodo.GetTipoConsumo() == "Gas")
                 {
                     metodo.SetConsumi(consumiSmc);
@@ -100,7 +101,7 @@ namespace Bolletta
                 b.CalcolaBolletta();
             }
 
-            bollette = bollette.OrderBy(b => b.GetTotale()).ToList();
+            bollette = bollette.OrderBy(b => b.GetTotale()).ToList(); // Viene ordinata la lista di bollette tramite il totale di ogni bolletta
 
             foreach (Bolletta b in bollette)
             {
