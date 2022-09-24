@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bolletta
 {
@@ -13,7 +11,7 @@ namespace Bolletta
             bool controllo;
             string s;
             int scelta;
-            double consumikWh, consumiSmc, kWhTot, smcTot = 0;
+            double consumikWh, consumiSmc;
             List<object> metodiRiscaldamento;
             List<Bolletta> bollette = new List<Bolletta>();
             Bolletta bolletta;
@@ -32,9 +30,6 @@ namespace Bolletta
                 s = Convert.ToString(Console.ReadLine());
                 controllo = double.TryParse(s, out consumiSmc); // Variabile boolena per controllare se il tipo di dato inserito è un double, => False: se non è un double, True: se lo è
             } while (!controllo || consumiSmc < 0); // Vengono letti gli smc annui medi finchè non viene inserito un numero maggiore di 0
-
-            kWhTot = (consumiSmc * 10.7) + consumikWh;
-            smcTot = (consumikWh / 10.7) + consumiSmc;
 
             do
             {
